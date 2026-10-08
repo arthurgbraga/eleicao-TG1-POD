@@ -29,4 +29,4 @@ class Eleitor:
         # CPF deve ter exatamente 11 caracteres numéricos
         if len(str(valor)) != 11 or not str(valor).isdigit():
             raise ErroCadastro("Eleitor", "CPF", str(valor))
-        self._cpf = str(valor)
+        self._cpf = str(valor) 
