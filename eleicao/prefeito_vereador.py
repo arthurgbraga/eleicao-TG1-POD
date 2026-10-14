@@ -36,7 +36,7 @@ class Prefeito(Candidato):
 
     @numero.setter
     def numero(self, valor: int) -> None:
-        # Adicionado o isdigit() para garantir que não tem letras
+
         if len(str(valor)) != 2 or not str(valor).isdigit():
             Prefeito.incrementar_erro()
             # Corrigido para o padrão (tipo_objeto, campo, valor)
@@ -54,7 +54,6 @@ class Prefeito(Candidato):
         self._cpf_vice = str(valor)
 
 
-# Classe recuada para ficar no mesmo nível do Prefeito
 class Vereador(Candidato):
     erros_validacao: int = 0
 
@@ -89,6 +88,6 @@ class Vereador(Candidato):
     def numero(self, valor: int) -> None:
         if len(str(valor)) != 5 or not str(valor).isdigit():
             Vereador.incrementar_erro()
-            # Corrigido para o padrão (tipo_objeto, campo, valor)
+
             raise ErroCadastro("Vereador", "número", str(valor))
         self._numero = int(valor)

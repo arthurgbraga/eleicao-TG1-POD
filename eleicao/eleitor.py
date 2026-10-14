@@ -1,8 +1,16 @@
-# eleicao/eleitor.py
 from .excecoes import ErroCadastro
 
+
 class Eleitor:
-    def __init__(self, nome: str, cpf: str, data_nascimento: str, titulo_eleitor: str, zona: int, secao: int):
+    def __init__(
+        self,
+        nome: str,
+        cpf: str,
+        data_nascimento: str,
+        titulo_eleitor: str,
+        zona: int,
+        secao: int,
+    ):
         self.nome = nome
         self.cpf = cpf
         self.data_nascimento = data_nascimento
@@ -29,4 +37,4 @@ class Eleitor:
         # CPF deve ter exatamente 11 caracteres numéricos
         if len(str(valor)) != 11 or not str(valor).isdigit():
             raise ErroCadastro("Eleitor", "CPF", str(valor))
-        self._cpf = str(valor) 
+        self._cpf = str(valor)

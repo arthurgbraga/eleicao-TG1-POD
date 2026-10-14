@@ -1,4 +1,3 @@
-# eleicao/candidato.py
 from abc import ABC, abstractmethod
 from .eleitor import Eleitor
 from .partido import Partido

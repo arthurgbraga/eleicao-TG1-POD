@@ -1,5 +1,3 @@
-# eleicao/excecoes.py
-
 class ErroCadastro(Exception):
     def __init__(self, tipo_objeto: str, campo: str, valor: str):
         self.tipo_objeto = tipo_objeto
