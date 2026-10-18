@@ -12,7 +12,6 @@ implementação da classe app foi uma das mais dificeis
 parte do relatório da classe eleição
 ## Evolução do conhecimento
 
-<!-- O que o grupo aprendeu sobre POO, pacotes, encapsulamento e exceções. -->
 ToTAL EVOLUÇÃO E NIVEL DE APRENDIZADO
 sobre pacotes , encapsulamentos , erros , execões, chamamento de métodos
 postagem no git que era algo que não tinhamos pleno conhecimento, testes com dados de entrada existentes
