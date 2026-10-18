@@ -5,6 +5,8 @@ from .excecoes import ErroCadastro
 
 
 class Prefeito(Candidato):
+    # Cada subclasse declara o seu próprio contador, assim os erros de
+    # prefeito e de vereador são contados separadamente
     erros_validacao: int = 0
 
     @classmethod
@@ -17,31 +19,25 @@ class Prefeito(Candidato):
         cpf: str,
         data_nascimento: str,
         titulo_eleitor: str,
-        zona: int,
-        secao: int,
+        zona: str,
+        secao: str,
+        numero: str,
         partido: Partido,
-        numero: int,
         cpf_vice: str,
         plano_governo: str,
     ):
         super().__init__(
-            nome, cpf, data_nascimento, titulo_eleitor, zona, secao, partido, numero
+            nome, cpf, data_nascimento, titulo_eleitor, zona, secao, numero, partido
         )
         self.cpf_vice = cpf_vice
         self.plano_governo = plano_governo
 
-    @property
-    def numero(self) -> int:
-        return self._numero
+    # Implementação Candidato
 
-    @numero.setter
-    def numero(self, valor: int) -> None:
-
-        if len(str(valor)) != 2 or not str(valor).isdigit():
+    def validar_numero(self, numero: str) -> None:
+        if len(numero) != 2 or not numero.isdigit():
             Prefeito.incrementar_erro()
-            # Corrigido para o padrão (tipo_objeto, campo, valor)
-            raise ErroCadastro("Prefeito", "número", str(valor))
-        self._numero = int(valor)
+            raise ErroCadastro("Prefeito", "numero", numero)
 
     @property
     def cpf_vice(self) -> str:
@@ -49,9 +45,17 @@ class Prefeito(Candidato):
 
     @cpf_vice.setter
     def cpf_vice(self, valor: str) -> None:
-        if len(str(valor)) != 11 or not str(valor).isdigit():
-            raise ErroCadastro("Prefeito", "CPF do Vice", str(valor))
-        self._cpf_vice = str(valor)
+        if len(valor) != 11 or not valor.isdigit():
+            raise ErroCadastro("Prefeito", "cpf_vice", valor)
+        self._cpf_vice = valor
+
+    @property
+    def plano_governo(self) -> str:
+        return self._plano_governo
+
+    @plano_governo.setter
+    def plano_governo(self, valor: str) -> None:
+        self._plano_governo = valor
 
 
 class Vereador(Candidato):
@@ -67,27 +71,37 @@ class Vereador(Candidato):
         cpf: str,
         data_nascimento: str,
         titulo_eleitor: str,
-        zona: int,
-        secao: int,
+        zona: str,
+        secao: str,
+        numero: str,
         partido: Partido,
-        numero: int,
         bairro: str,
         projeto_lei: str,
     ):
         super().__init__(
-            nome, cpf, data_nascimento, titulo_eleitor, zona, secao, partido, numero
+            nome, cpf, data_nascimento, titulo_eleitor, zona, secao, numero, partido
         )
         self.bairro = bairro
         self.projeto_lei = projeto_lei
 
-    @property
-    def numero(self) -> int:
-        return self._numero
-
-    @numero.setter
-    def numero(self, valor: int) -> None:
-        if len(str(valor)) != 5 or not str(valor).isdigit():
+    # Regra dos 5 digitos para prefeito, diferente disso da erro
+    def validar_numero(self, numero: str) -> None:
+        if len(numero) != 5 or not numero.isdigit():
             Vereador.incrementar_erro()
+            raise ErroCadastro("Vereador", "numero", numero)
 
-            raise ErroCadastro("Vereador", "número", str(valor))
-        self._numero = int(valor)
+    @property
+    def bairro(self) -> str:
+        return self._bairro
+
+    @bairro.setter
+    def bairro(self, valor: str) -> None:
+        self._bairro = valor
+
+    @property
+    def projeto_lei(self) -> str:
+        return self._projeto_lei
+
+    @projeto_lei.setter
+    def projeto_lei(self, valor: str) -> None:
+        self._projeto_lei = valor

@@ -1,7 +1,13 @@
+# eleicao/excecoes.py
+
+
 class ErroCadastro(Exception):
-    def __init__(self, tipo_objeto: str, campo: str, valor: str):
-        self.tipo_objeto = tipo_objeto
+    def __init__(self, tipo: str, campo: str, valor: str):
+        self.tipo = tipo
         self.campo = campo
         self.valor = valor
-        self.mensagem = f"Erro no cadastro de {tipo_objeto}: O campo '{campo}' com valor '{valor}' é inválido."
-        super().__init__(self.mensagem)
+        mensagem = (
+            f"Erro ao cadastrar {tipo}: campo '{campo}' com valor inválido '{valor}'"
+        )
+        # Passa a mensagem para a Exception, assim str(erro) devolve esse texto
+        super().__init__(mensagem)
