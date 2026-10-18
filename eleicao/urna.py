@@ -5,7 +5,7 @@ class Urna:
     def __init__(self, zona: int, secao: int):
         self._zona = zona
         self._secao = secao
-        # Voto em branco fica guardado na chave "BRANCOS".
+        # Voto em branco fica guardado na chave "BRANCO".
         self._votos_prefeito: dict = {}
         self._votos_vereador: dict = {}
 

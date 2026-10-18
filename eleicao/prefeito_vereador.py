@@ -84,7 +84,7 @@ class Vereador(Candidato):
         self.bairro = bairro
         self.projeto_lei = projeto_lei
 
-    # Regra dos 5 digitos para prefeito, diferente disso da erro
+    # Regra dos 5 digitos para vereador, diferente disso da erro
     def validar_numero(self, numero: str) -> None:
         if len(numero) != 5 or not numero.isdigit():
             Vereador.incrementar_erro()

@@ -141,7 +141,7 @@ class Eleicao:
         vereadores.sort(key=lambda par: par[0], reverse=True)
         return vereadores[:10]
 
-    # RELATÓRIOS (aqui deu red mlk)
+    # RELATÓRIOS
     def relatorio_eleitores(self) -> str:
         zonas_secoes = {}
         for eleitor in self.eleitores:
